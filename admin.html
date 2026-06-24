@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - BlogSocial</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo" style="text-decoration:none;">BlogSocial</a>
+            
+            <!-- Versão Desktop: aparece em telas maiores -->
+            <div class="admin-header-right">
+                <div id="usuarioInfo"></div>
+                <button class="btn-logout" onclick="AuthManager.logout()">🚪 Sair</button>
+            </div>
+            
+            <!-- Versão Mobile: menu suspenso (aparece em telas menores) -->
+            <div class="admin-user-menu" id="adminUserMenu">
+                <button class="admin-user-menu-btn" id="adminUserMenuBtn">
+                    <img src="https://ui-avatars.com/api/?name=Admin&size=32&background=6C5CE7&color=fff" alt="User" id="adminUserMenuAvatar">
+                    <span id="adminUserMenuName">Menu</span>
+                    <span class="arrow" id="adminUserMenuArrow">▼</span>
+                </button>
+                <div class="admin-user-dropdown" id="adminUserDropdown">
+                    <div class="dropdown-user-info">
+                        <img src="https://ui-avatars.com/api/?name=Admin&size=50&background=6C5CE7&color=fff" alt="User" id="adminDropdownAvatar">
+                        <strong id="adminDropdownName">Administrador</strong>
+                        <span id="adminDropdownTag">Admin</span>
+                    </div>
+                    <button class="dropdown-item logout" onclick="AuthManager.logout()">🚪 Sair</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="admin-section">
+            <div class="container">
+                <div class="admin-abas">
+                    <button class="admin-aba ativa" data-aba="publicar">📝 Publicar Artigo</button>
+                    <button class="admin-aba" data-aba="autores" id="abaAutoresBtn">👥 Gerenciar Autores</button>
+                </div>
+                
+                <div id="mensagemSucesso" class="mensagem-sucesso"></div>
+                
+                <!-- Aba Publicar -->
+                <div class="admin-aba-conteudo" id="aba-publicar">
+                    <h1>📝 Publicar Novo Artigo</h1>
+                    
+                    <form id="formArtigo" class="form-admin">
+                        <div class="form-group">
+                            <label for="titulo">📌 Título do Artigo *</label>
+                            <input type="text" id="titulo" required placeholder="Digite o título">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="autor">👤 Autor *</label>
+                            <input type="text" id="autor" required readonly style="background:#f0f0ff;cursor:default;">
+                            <small style="color:#666;">Autor identificado automaticamente pelo login</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tipoImagem">🖼️ Tipo de Imagem</label>
+                            <select id="tipoImagem" onchange="toggleTipoImagem()">
+                                <option value="url">🔗 URL da Imagem</option>
+                                <option value="arquivo">📁 Upload de Arquivo</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" id="grupoImagemUrl">
+                            <label for="imagemUrl">🔗 URL da Imagem</label>
+                            <input type="url" id="imagemUrl" placeholder="https://exemplo.com/imagem.jpg">
+                        </div>
+                        
+                        <div class="form-group" id="grupoImagemArquivo" style="display:none;">
+                            <label for="imagemArquivo">📁 Selecionar Arquivo</label>
+                            <input type="file" id="imagemArquivo" accept="image/*">
+                        </div>
+                        
+                        <div id="previewImagem" class="imagem-preview"></div>
+                        
+                        <div class="form-group">
+                            <label for="palavrasChave">🏷️ Palavras-chave *</label>
+                            <input type="text" id="palavrasChave" required placeholder="tecnologia, sustentabilidade, inovação">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="conteudo">📄 Conteúdo * (HTML)</label>
+                            <textarea id="conteudo" rows="15" required placeholder="<h2>Título</h2><p>Conteúdo...</p>"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-publicar">📤 Publicar Artigo</button>
+                    </form>
+                    
+                    <div class="admin-lista">
+                        <h2>📚 Artigos Publicados</h2>
+                        <div id="artigosExistentes"></div>
+                    </div>
+                </div>
+                
+                <!-- Aba Gerenciar Autores (MASTER) -->
+                <div class="admin-aba-conteudo" id="aba-autores-master" style="display:none;">
+                    <h1>👥 Gerenciar Autores</h1>
+                    <p style="color:#666;margin-bottom:1.5rem;">Cadastre novos autores e gerencie os existentes no sistema.</p>
+                    
+                    <form id="formAutor" class="form-admin">
+                        <div class="form-group"><label for="autorNome">👤 Nome Completo *</label><input type="text" id="autorNome" required placeholder="Nome do autor"></div>
+                        <div class="form-group"><label for="autorEmail">📧 E-mail *</label><input type="email" id="autorEmail" required placeholder="autor@blogsocial.com"></div>
+                        <div class="form-group"><label for="autorSenha">🔒 Senha * (mín. 4 caracteres)</label><input type="password" id="autorSenha" required placeholder="Senha" minlength="4"></div>
+                        <div class="form-group"><label for="autorEspecialidade">🎯 Especialidade</label><input type="text" id="autorEspecialidade" placeholder="Ex: Tecnologia e Inovação"></div>
+                        <div class="form-group"><label for="autorBio">📝 Biografia</label><textarea id="autorBio" rows="4" placeholder="Breve biografia..."></textarea></div>
+                        <div class="form-group"><label for="autorFoto">📷 Foto</label><input type="file" id="autorFoto" accept="image/*"></div>
+                        <button type="submit" class="btn-publicar">✅ Cadastrar Autor</button>
+                    </form>
+                    
+                    <div class="admin-lista">
+                        <h2>👥 Autores Cadastrados</h2>
+                        <div id="autoresExistentes"></div>
+                    </div>
+                </div>
+                
+                <!-- Aba Minha Conta (AUTOR COMUM) -->
+                <div class="admin-aba-conteudo" id="aba-minha-conta" style="display:none;">
+                    <h1>👤 Minha Conta</h1>
+                    <p style="color:#666;margin-bottom:1.5rem;">Gerencie seus dados pessoais e credenciais de acesso.</p>
+                    
+                    <form id="formMinhaConta" class="form-admin">
+                        <div class="form-group"><label for="minhaContaNome">👤 Nome Completo *</label><input type="text" id="minhaContaNome" required placeholder="Seu nome completo"></div>
+                        <div class="form-group"><label for="minhaContaEmail">📧 E-mail *</label><input type="email" id="minhaContaEmail" required placeholder="seu@email.com"></div>
+                        <div class="form-group"><label for="minhaContaSenha">🔒 Nova Senha</label><input type="password" id="minhaContaSenha" placeholder="Deixe em branco para manter a atual" minlength="4"><small>Preencha apenas se quiser alterar sua senha</small></div>
+                        <div class="form-group"><label for="minhaContaEspecialidade">🎯 Especialidade</label><input type="text" id="minhaContaEspecialidade" placeholder="Sua especialidade"></div>
+                        <div class="form-group"><label for="minhaContaBio">📝 Biografia</label><textarea id="minhaContaBio" rows="4" placeholder="Sua biografia..."></textarea></div>
+                        <div class="form-group"><label for="minhaContaFoto">📷 Atualizar Foto</label><input type="file" id="minhaContaFoto" accept="image/*"><small>Deixe em branco para manter a foto atual</small></div>
+                        <button type="submit" class="btn-publicar">💾 Salvar Alterações</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/database.js"></script>
+    <script src="js/autores.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

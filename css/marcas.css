@@ -1,0 +1,169 @@
+/* ==========================================
+   SEÇÃO DE MARCAS APOIADORAS
+   ========================================== */
+
+.marcas-section {
+    padding: 3rem 0;
+    background: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Linhas decorativas de separação */
+.marcas-section::before,
+.marcas-section::after {
+    content: '';
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(to right, transparent 0%, #e0e0e0 20%, #e0e0e0 80%, transparent 100%);
+}
+
+.marcas-section::before { top: 0; }
+.marcas-section::after { bottom: 0; }
+
+.marcas-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing);
+}
+
+.marcas-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.marcas-header h2 {
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.marcas-header p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Container do carrossel com fade nas laterais */
+.marcas-carrossel-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 1rem 0;
+}
+
+/* Efeito de fade (desaparecimento gradual) nas bordas */
+.marcas-carrossel-wrapper::before,
+.marcas-carrossel-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.marcas-carrossel-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, white 0%, transparent 100%);
+}
+
+.marcas-carrossel-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, white 0%, transparent 100%);
+}
+
+/* Track com scroll infinito */
+.marcas-track {
+    display: flex;
+    gap: 4rem;
+    animation: scrollMarcas 25s linear infinite;
+    width: max-content;
+}
+
+.marcas-track:hover {
+    animation-play-state: paused;
+}
+
+/* Cada logo de marca */
+.marca-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    transition: transform 0.3s;
+}
+
+.marca-item:hover {
+    transform: scale(1.1);
+}
+
+.marca-logo {
+    height: 40px;
+    opacity: 0.5;
+    filter: grayscale(100%);
+    transition: opacity 0.3s, filter 0.3s;
+}
+
+/* Ao passar o mouse, a logo ganha cor */
+.marca-item:hover .marca-logo {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+/* Animação de deslocamento contínuo */
+@keyframes scrollMarcas {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+   ========================================== */
+
+@media (max-width: 768px) {
+    .marcas-section {
+        padding: 2rem 0;
+    }
+
+    .marcas-carrossel-wrapper::before,
+    .marcas-carrossel-wrapper::after {
+        width: 60px;
+    }
+
+    .marcas-track {
+        gap: 2.5rem;
+        animation: scrollMarcas 20s linear infinite;
+    }
+
+    .marca-logo {
+        height: 30px;
+    }
+
+    .marcas-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .marcas-header p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .marcas-track {
+        gap: 2rem;
+        animation: scrollMarcas 15s linear infinite;
+    }
+
+    .marca-logo {
+        height: 25px;
+    }
+
+    .marcas-carrossel-wrapper::before,
+    .marcas-carrossel-wrapper::after {
+        width: 40px;
+    }
+}

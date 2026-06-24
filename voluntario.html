@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Social - Seja Voluntário</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="css/voluntario.css">
+</head>
+<body>
+    <!-- Navegação -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo" style="text-decoration:none;">BlogSocial</a>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="artigos.html">Artigos</a></li>
+                <li><a href="voluntario.html" class="active">Seja Voluntário</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Seção do formulário de voluntariado -->
+        <section class="voluntario-section">
+            <div class="container">
+                <div class="voluntario-card">
+                    <h1>🌟 Junte-se a Nós!</h1>
+                    <p>Faça a diferença na sua comunidade. Preencha o formulário abaixo e entraremos em contato.</p>
+
+                    <form id="formVoluntario" class="form-voluntario" novalidate>
+                        <!-- Campo: Nome -->
+                        <div class="form-group">
+                            <label for="nome">👤 Nome Completo</label>
+                            <input type="text" id="nome" name="nome" required
+                                   placeholder="Digite seu nome completo"
+                                   autocomplete="name" minlength="3">
+                        </div>
+
+                        <!-- Campo: E-mail -->
+                        <div class="form-group">
+                            <label for="email">📧 E-mail</label>
+                            <input type="email" id="email" name="email" required
+                                   placeholder="seu@email.com"
+                                   autocomplete="email">
+                        </div>
+
+                        <!-- Campo: Telefone com validação brasileira -->
+                        <div class="form-group">
+                            <label for="telefone">📱 Telefone (com DDD)</label>
+                            <input type="tel" id="telefone" name="telefone" required
+                                   placeholder="Digite apenas números (11 987654321)"
+                                   autocomplete="tel" inputmode="numeric" maxlength="15">
+                            <div class="feedback-telefone" id="feedbackTelefone"></div>
+                        </div>
+
+                        <!-- Botão de envio -->
+                        <button type="submit" class="btn-voluntario" id="btnSubmit">
+                            ✨ Quero Ser Voluntário
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="artigos.html">Artigos</a></li>
+                    <li><a href="voluntario.html">Voluntário</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>contato@blogsocial.com</p>
+                <p>+55 (11) 1234-5678</p>
+                <div class="footer-redes-sociais">
+                    <a href="#" class="footer-rede-link" title="Facebook" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" class="footer-rede-link" title="Instagram" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+                    </a>
+                    <a href="#" class="footer-rede-link" title="Twitter" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                    </a>
+                    <a href="#" class="footer-rede-link" title="YouTube" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+                    </a>
+                    <a href="#" class="footer-rede-link" title="LinkedIn" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit">Inscrever</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 BlogSocial. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/database.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/voluntario.js"></script>
+</body>
+</html>

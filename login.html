@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Administrativo - BlogSocial</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <!-- Container centralizado da tela de login -->
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Cabeçalho com logo -->
+            <div class="login-header">
+                <div class="logo">BlogSocial</div>
+                <h2>Área Administrativa</h2>
+                <p style="color:#666;font-size:0.9rem;">Faça login para acessar o painel</p>
+            </div>
+
+            <!-- Formulário de login -->
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" required placeholder="admin@blogsocial.com" autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" required placeholder="••••••" autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="btn-login">Entrar</button>
+
+                <!-- Mensagem de erro (oculta por padrão) -->
+                <div id="mensagemErro" class="mensagem-erro" style="display:none;"></div>
+            </form>
+
+            <!-- Credenciais de teste -->
+            <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid #eee;text-align:center;">
+                <p style="font-size:0.8rem;color:#999;margin-bottom:0.5rem;">Credenciais de teste:</p>
+                <p style="font-size:0.75rem;color:#aaa;">Admin: admin@blogsocial.com / admin123</p>
+                <p style="font-size:0.75rem;color:#aaa;">Autores: nome.sobrenome@blogsocial.com / nome123</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/autores.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

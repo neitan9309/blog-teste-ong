@@ -1,0 +1,665 @@
+/* ==========================================
+   ESTILOS PARA PÁGINAS DE ARTIGOS
+   ========================================== */
+
+/* ==========================================
+   HEADER FIXO
+   ========================================== */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================
+   PÁGINA DE LISTAGEM DE ARTIGOS
+   ========================================== */
+
+.artigos-page {
+    padding: 4rem 0;
+    min-height: 60vh;
+}
+
+.artigos-page .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing);
+}
+
+.artigos-header {
+    margin-bottom: 3rem;
+}
+
+.artigos-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+    font-family: var(--font-heading);
+}
+
+/* Barra de filtros e busca */
+.filtros {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.filtros input {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    transition: border-color 0.3s;
+}
+
+.filtros input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.filtros select {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    background: white;
+    cursor: pointer;
+}
+
+/* Grid de cards de artigos (máximo 3 colunas) */
+.artigos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.artigo-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.artigo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.artigo-imagem {
+    height: 200px;
+    overflow: hidden;
+}
+
+.artigo-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.artigo-card:hover .artigo-imagem img {
+    transform: scale(1.1);
+}
+
+.artigo-info {
+    padding: 1.5rem;
+}
+
+.artigo-info h3 {
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+    line-height: 1.4;
+    font-family: var(--font-heading);
+}
+
+/* Palavras-chave e metadados dos cards */
+.palavras-chave {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.keyword-tag {
+    background: var(--gradient-1);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.artigo-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    font-size: 0.9rem;
+    font-family: var(--font-primary);
+}
+
+/* Paginação */
+.paginacao {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.paginacao-botoes {
+    display: inline-flex;
+    gap: 0.5rem;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 50px;
+    box-shadow: var(--shadow);
+}
+
+.pagina-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: var(--dark-color);
+    font-weight: 500;
+    font-family: var(--font-primary);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pagina-btn.active {
+    background: var(--gradient-1);
+    color: white;
+}
+
+.pagina-btn:hover:not(.active) {
+    background: #f0f0f0;
+}
+
+.pagina-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* ==========================================
+   PÁGINA DE ARTIGO INDIVIDUAL
+   ========================================== */
+
+.artigo-individual {
+    padding: 2rem 0 4rem;
+    min-height: 60vh;
+    background: var(--light-color);
+}
+
+.artigo-individual .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 var(--spacing);
+}
+
+/* Cabeçalho do artigo (título, autor, data, palavras-chave) */
+.artigo-cabecalho {
+    margin-bottom: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 1;
+}
+
+.artigo-cabecalho h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+    line-height: 1.2;
+    font-family: var(--font-heading);
+}
+
+.artigo-detalhes {
+    display: flex;
+    gap: 2rem;
+    color: #666;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    font-family: var(--font-primary);
+}
+
+.artigo-detalhes span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.artigo-detalhes .emoji {
+    color: var(--primary-color);
+    font-style: normal;
+}
+
+.artigo-cabecalho .palavras-chave {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Imagem de destaque do artigo */
+.artigo-imagem-destaque {
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.artigo-imagem-destaque img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Corpo do texto do artigo */
+.artigo-texto {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--dark-color);
+    font-family: var(--font-primary);
+}
+
+.artigo-texto h2 {
+    margin: 2rem 0 1rem;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-family: var(--font-heading);
+}
+
+.artigo-texto h3 {
+    margin: 1.5rem 0 1rem;
+    color: var(--dark-color);
+    font-size: 1.4rem;
+    font-family: var(--font-heading);
+}
+
+.artigo-texto p {
+    margin-bottom: 1rem;
+}
+
+.artigo-texto ul,
+.artigo-texto ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.artigo-texto li {
+    margin-bottom: 0.5rem;
+}
+
+.artigo-texto img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin: 1rem 0;
+}
+
+/* ==========================================
+   SEÇÃO DO AUTOR (DESTAQUE NO FINAL)
+   ========================================== */
+
+.artigo-autor-secao {
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 2px solid #f0f0f0;
+}
+
+.autor-card {
+    display: flex;
+    gap: 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid #e8e8e8;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Borda decorativa lateral */
+.autor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--gradient-1);
+    border-radius: 0 5px 5px 0;
+}
+
+.autor-card:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.autor-foto-wrapper {
+    flex-shrink: 0;
+    position: relative;
+}
+
+.autor-foto {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.autor-card:hover .autor-foto {
+    transform: scale(1.05);
+}
+
+/* Indicador de status online */
+.autor-status {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 18px;
+    height: 18px;
+    background: #28a745;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.autor-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.autor-nome {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 0.3rem;
+    font-family: var(--font-heading);
+    letter-spacing: -0.5px;
+}
+
+.autor-especialidade {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    background: rgba(108, 92, 231, 0.1);
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    width: fit-content;
+    font-family: var(--font-primary);
+}
+
+.autor-bio {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    font-family: var(--font-primary);
+}
+
+.autor-redes {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.autor-rede-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    color: #666;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.autor-rede-link:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+}
+
+/* ==========================================
+   METADADOS COMPLEMENTARES (DATA, LEITURA)
+   ========================================== */
+
+.artigo-metadados-secundarios {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    background: #fafafa;
+    border-radius: var(--border-radius);
+    border: 1px solid #eee;
+}
+
+.metadados-linha {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.2rem;
+}
+
+.metadado-secundario {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.metadado-secundario-icone {
+    font-size: 1.3rem;
+    opacity: 0.7;
+}
+
+.metadado-secundario div {
+    display: flex;
+    flex-direction: column;
+}
+
+.metadado-secundario-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    font-weight: 600;
+    font-family: var(--font-primary);
+}
+
+.metadado-secundario-valor {
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 500;
+    font-family: var(--font-primary);
+}
+
+.metadados-chave {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+    border-top: 1px solid #e8e8e8;
+}
+
+/* Botão de voltar */
+.btn-voltar {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--gradient-1);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-weight: 500;
+    font-family: var(--font-primary);
+}
+
+.btn-voltar:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+}
+
+/* Estado de artigo não encontrado */
+.artigo-nao-encontrado {
+    text-align: center;
+    padding: 4rem var(--spacing);
+}
+
+.artigo-nao-encontrado h2 {
+    font-size: 2rem;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-family: var(--font-heading);
+}
+
+.artigo-nao-encontrado p {
+    color: #666;
+    margin-bottom: 2rem;
+    font-family: var(--font-primary);
+}
+
+/* ==========================================
+   MENU MOBILE
+   ========================================== */
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+        gap: 0.5rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/* ==========================================
+   RESPONSIVIDADE GERAL
+   ========================================== */
+
+@media (max-width: 1024px) {
+    .artigos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .artigos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .artigo-individual {
+        padding: 1.5rem 0 3rem;
+    }
+
+    .artigo-cabecalho {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .artigo-cabecalho h1 {
+        font-size: 1.6rem;
+    }
+
+    .artigo-detalhes {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .artigo-detalhes span {
+        font-size: 0.9rem;
+    }
+
+    .artigo-texto {
+        font-size: 1rem;
+        padding: 1.2rem;
+    }
+
+    .artigo-imagem-destaque img {
+        max-height: 300px;
+    }
+
+    .autor-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .autor-card::before {
+        width: 100%;
+        height: 5px;
+        top: 0;
+        left: 0;
+        border-radius: 0 0 5px 5px;
+    }
+
+    .autor-foto {
+        width: 90px;
+        height: 90px;
+    }
+
+    .autor-nome {
+        font-size: 1.3rem;
+    }
+
+    .autor-especialidade {
+        align-self: center;
+    }
+
+    .autor-redes {
+        justify-content: center;
+    }
+
+    .metadados-linha {
+        gap: 1.5rem;
+        flex-direction: column;
+    }
+
+    .artigo-metadados-secundarios {
+        padding: 1rem;
+    }
+}
